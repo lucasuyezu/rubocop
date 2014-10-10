@@ -12,7 +12,11 @@ module RuboCop
                 :parser_error, :raw_source
 
     def self.from_file(path)
-      new(File.read(path), path)
+      if path == "stdin"
+        new(STDIN.read, "stdin")
+      else
+        new(File.read(path), path)
+      end
     end
 
     def initialize(source, path = nil)

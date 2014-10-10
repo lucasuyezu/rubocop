@@ -138,6 +138,8 @@ module RuboCop
       option(opts, '-l', '--lint')
       option(opts, '-a', '--auto-correct')
 
+      option(opts, '-i', '--stdin')
+
       @options[:color] = true
       option(opts, '-n', '--no-color') { @options[:color] = false }
 

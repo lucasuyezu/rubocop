@@ -149,6 +149,7 @@ Command flag              | Description
 `-c/--config`             | Run with specified config file
 `-f/--format`             | Choose a formatter
 `-o/--out`                | Write output to a file instead of STDOUT
+`-i/--stdin`              | Read input from STDIN.
 `-r/--require`            | Require Ruby file (see [Loading Extensions](#loading-extensions))
 `-R/--rails`              | Run extra Rails cops
 `-l/--lint`               | Run only lint cops

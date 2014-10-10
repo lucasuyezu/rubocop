@@ -21,11 +21,16 @@ module RuboCop
       @options[:fail_fast]
     end
 
+    def stdin?
+      @options[:stdin]
+    end
+
     # Generate a list of target files by expanding globbing patterns
     # (if any). If args is empty, recursively find all Ruby source
     # files under the current directory
     # @return [Array] array of file paths
     def find(args)
+      return target_stdin if stdin?
       return target_files_in_dir if args.empty?
 
       files = []
@@ -69,6 +74,10 @@ module RuboCop
       target_files.sort_by! { |path| -File.mtime(path).to_i } if fail_fast?
 
       target_files
+    end
+
+    def target_stdin
+      ["stdin"]
     end
 
     def ruby_executable?(file)
